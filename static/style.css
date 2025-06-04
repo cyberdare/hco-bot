@@ -1,0 +1,111 @@
+/* === GLOBAL SETTINGS === */
+body {
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* === COMMON CONTAINER/BOX === */
+.container, .box {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  width: 90%;
+  max-width: 600px;
+}
+
+/* === HEADINGS === */
+h1, h2 {
+  color: #00ffff;
+  text-align: center;
+}
+
+/* === INPUT FIELDS === */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+/* === BUTTONS === */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00ffff;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00cccc;
+}
+
+/* === LINK STYLES === */
+.link, .logout-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.link a, .logout-link a {
+  color: #00ffff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+/* === CHAT STYLES === */
+#chatWindow {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  line-height: 1.4em;
+  height: 60vh;
+}
+
+.message {
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+}
+
+.userMsg {
+  color: #a6e22e;
+  font-weight: bold;
+}
+
+.botMsg {
+  color: #b0fefe;
+}
+
+form {
+  display: flex;
+}
+
+input[type='text']#commandInput {
+  border-radius: 8px 0 0 8px;
+  flex-grow: 1;
+}
+
+button[type='submit'] {
+  border-radius: 0 8px 8px 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
