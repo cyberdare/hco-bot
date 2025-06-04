@@ -45,7 +45,8 @@ def login():
 
             "raiyan": "pass123",
             "admin": "admin@123",
-            "ashish": "welcome2025"}
+            "ashish": "welcome2025"
+            "Rain": "Rainrain123"}
         if username in user_db and user_db[username] == password:
             session["username"] = "admin"
             return redirect(url_for("admin_panel"))
