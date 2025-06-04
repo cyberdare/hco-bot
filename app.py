@@ -41,8 +41,12 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        user_db = {
 
-        if username == "admin" and password == "admin":
+            "raiyan": "pass123",
+            "admin": "admin@123",
+            "ashish": "welcome2025"}
+        if username in user_db and user_db[username] == password:
             session["username"] = "admin"
             return redirect(url_for("admin_panel"))
 
