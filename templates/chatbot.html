@@ -1,115 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hackers Colony Bot 🤖</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f0f0f;
-    color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  .container {
-    width: 90%;
-    max-width: 600px;
-    background: #1a1a1a;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-  }
-
-  h1 {
-    color: #00ffff;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  #chatWindow {
-    flex-grow: 1;
-    background-color: #222;
-    border-radius: 10px;
-    padding: 15px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    font-size: 0.95em;
-    line-height: 1.4em;
-  }
-
-  .message {
-    margin-bottom: 15px;
-    white-space: pre-wrap;
-  }
-
-  .userMsg {
-    color: #a6e22e;
-    font-weight: bold;
-  }
-
-  .botMsg {
-    color: #b0fefe;
-  }
-
-  form {
-    display: flex;
-  }
-
-  input[type='text'] {
-    flex-grow: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 8px 0 0 8px;
-    background-color: #2c2c2c;
-    color: white;
-    font-size: 1em;
-  }
-
-  button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 0 8px 8px 0;
-    background-color: #00ffff;
-    color: #000;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background-color: #00cccc;
-  }
-
-  a {
-    color: #00ffff;
-    text-decoration: underline;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hackers Colony Bot 🤖</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .disclaimer {
+      width: 100%;
+      background-color: #111;
+      color: #ff6666;
+      padding: 8px 0;
+      font-size: 0.9em;
+      text-align: center;
+      z-index: 2;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 240px;
+      background-color: #1c1c1c;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+    .sidebar a, .sidebar button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #222;
+      border: none;
+      color: #e0e0e0;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+    .sidebar a:hover, .sidebar button:hover {
+      background-color: #333;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .header {
+      text-align: center;
+      color: #00ffff;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    #chatWindow {
+      flex-grow: 1;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 15px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+      line-height: 1.4em;
+    }
+    .message {
+      margin-bottom: 15px;
+      white-space: pre-wrap;
+    }
+    .userMsg {
+      color: #a6e22e;
+      font-weight: bold;
+    }
+    .botMsg {
+      color: #b0fefe;
+    }
+    form {
+      display: flex;
+    }
+    input[type='text'] {
+      flex-grow: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      background-color: #2c2c2c;
+      color: white;
+      font-size: 1em;
+    }
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #00cccc;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      .sidebar {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .sidebar h2 {
+        display: none;
+      }
+      .main {
+        flex: 1;
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hackers Colony Bot 🤖</h1>
-    <div id="chatWindow"></div>
-    <form id="chatForm">
-      <input type="text" id="commandInput" placeholder="Type your command here..." autocomplete="off" />
-      <button type="submit">Send</button>
-    </form>
+  <div class="disclaimer">
+    <marquee behavior="scroll" direction="left">
+      Hello {{ username }} — this bot does not promote or support illegal hacking. This is just for educational purposes. Use it carefully and at your own risk.
+    </marquee>
+  </div>
+
+  <div class="content">
+    <div class="sidebar">
+      <div>
+        <h2>👤 {{ username }}</h2>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">📧 Contact Support</a>
+      </div>
+      <form action="/logout" method="get">
+        <button type="submit">🔓 Logout</button>
+      </form>
+    </div>
+
+    <div class="main">
+      <div class="header">Hackers Colony Bot 🤖</div>
+      <div id="chatWindow"></div>
+      <form id="chatForm">
+        <input type="text" id="commandInput" placeholder="Type your command" autocomplete="on" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </div>
 
 <script>
+  const username = "{{ username|e }}";
   let commandMap = {};
+  let directCommandMap = {};
 
-  // Load commands from backend
   fetch('/commands')
     .then(response => response.json())
     .then(data => {
@@ -117,8 +183,16 @@
         const [cmd, link] = line.split('=');
         if (cmd && link) commandMap[cmd.trim().toLowerCase()] = link.trim();
       });
-    })
-    .catch(error => console.error('Error loading commands:', error));
+    });
+
+  fetch('/directcommands')
+    .then(response => response.json())
+    .then(data => {
+      data.directcommands.forEach(line => {
+        const [cmd, link] = line.split('=');
+        if (cmd && link) directCommandMap[cmd.trim().toLowerCase()] = link.trim();
+      });
+    });
 
   const chatWindow = document.getElementById('chatWindow');
   const chatForm = document.getElementById('chatForm');
@@ -129,7 +203,6 @@
     div.classList.add('message', sender === 'user' ? 'userMsg' : 'botMsg');
 
     if (sender === 'bot') {
-      // Parse text for URLs and convert them to clickable links
       const urlRegex = /(https?:\/\/[^\s]+)/g;
       const htmlText = text.replace(urlRegex, url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
       div.innerHTML = htmlText;
@@ -138,7 +211,24 @@
     }
 
     chatWindow.appendChild(div);
-    chatWindow.scrollTop = chatWindow.scrollHeight; // scroll down
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  function getBestMatch(input, map) {
+    input = input.toLowerCase();
+    let bestMatch = null;
+    let highestScore = 0;
+    for (let key in map) {
+      let score = 0;
+      if (input === key) score += 100;
+      else if (input.includes(key)) score += 80;
+      else if (key.includes(input)) score += 60;
+      if (score > highestScore) {
+        highestScore = score;
+        bestMatch = key;
+      }
+    }
+    return bestMatch;
   }
 
   chatForm.addEventListener('submit', e => {
@@ -146,116 +236,41 @@
     const input = commandInput.value.trim();
     if (!input) return;
 
-    addMessage(`You: ${input}`, 'user');
+    addMessage(`${username}: ${input}`, 'user');
     commandInput.value = '';
-
     const lowerInput = input.toLowerCase();
 
-    if (lowerInput === 'menu') {
-      const menuMsg = `🚦Type any command shown below. Bot will reply with a secure link.\n\n` +
-      `🤖..Kali Nethunter\n` +
-      `🤖..Download Termux\n` +
-      `🤖..Facebook hack\n` +
-      `🤖..Instagram hack\n` +
-      `🤖..WhatsApp hack\n` +
-      `🤖..DDOS attack\n` +
-      `🤖..Termux X11\n` +
-      `🤖..Bot\n` +
-      `🤖..Zip Cracker\n` +
-      `🤖..Wordlist Path\n` +
-      `🤖..Free proxy\n` +
-      `🤖..Bug bounty\n` +
-      `🤖..Cupp Tool\n` +
-      `🤖..Hydra Tool\n` +
-      `🤖..Fake Email\n` +
-      `🤖..Learn Coding\n` +
-      `🤖..Hacking Class\n` +
-      `🤖..Password Hack\n` +
-      `🤖..Channel link\n` +
-      `🤖..Routersploit\n` +
-      `🤖..Camera Hack\n` +
-      `🤖..Ransomware\n` +
-      `🤖..Facebook Hack\n` +
-      `🤖..Android Pentesting\n` +
-      `🤖..Metasploit\n` +
-      `🤖..Gmail hack\n` +
-      `🤖..Bruteforce attack\n` +
-      `🤖..Instagram Bruteforce attack\n` +
-      `🤖..Fb Cloning\n` +
-      `🤖..Track location\n` +
-      `🤖..Wordlist\n` +
-      `🤖..Bug Bounty\n` +
-      `🤖..Root Android\n` +
-      `🤖..Install Kali linux\n` +
-      `🤖..Termux Tutorial\n` +
-      `🤖..Ngrok Masking\n` +
-      `🤖..Hacking Phone\n` +
-      `🤖..Hide link\n` +
-      `🤖..Find Phone\n` +
-      `🤖..Social Engineering\n` +
-      `🤖..Hacking Tool\n` +
-      `🤖..Hacking Videos\n` +
-      `🤖..Termux tool\n` +
-      `🤖..Virtual phone\n` +
-      `🤖..Hacking link\n` +
-      `🤖..Termux toolkit\n` +
-      `🤖..Info gathering\n` +
-      `🤖..Download Termux\n` +
-      `🤖..Scope Hunter\n` +
-      `🤖..Key Logger\n` +
-      `🤖..SS7 Attack\n` +
-      `🤖..Install Adb\n` +
-      `🤖..Recover photos\n` +
-      `🤖..Andrax Hacking\n` +
-      `🤖..Recover Facebook Account\n` +
-      `🤖..Report Facebook Account\n` +
-      `🤖..Facebook account Hacked\n` +
-      `🤖..WhatsApp Bombing\n` +
-      `🤖..Hack Website\n` +
-      `🤖..Root Termux\n` +
-      `🤖..Usb Rubber Ducky\n` +
-      `🤖..Learn Hacking\n` +
-      `🤖..Powerful Tool\n` +
-      `🤖..WhatsApp Unban\n` +
-      `🤖..Premium app\n` +
-      `🤖..WhatsApp hack\n` +
-      `🤖..WhatsApp bombing\n` +
-      `🤖..Hack wifi\n` +
-      `🤖..WhatsApp virus\n` +
-      `🤖..Sms bombing\n` +
-      `🤖..Earn money online\n` +
-      `🤖..Payload\n` +
-      `🤖..Install Ngrok\n` +
-      `🤖..Fake number\n` +
-      `🤖..USA number\n` +
-      `🤖..Video\n` +
-      `🤖..Channel link\n` +
-      `🤖..IP hack\n` +
-      `🤖..WhatsApp Crashing\n` +
-      `🤖..WhatsApp Malware\n` +
-      `🤖..Wifi Hack\n` +
-      `🤖..Rat Tool\n` +
-      `🤖..Be a Hacker\n` +
-      `🤖..Phishing\n` +
-      `🤖..Tool X\n` +
-      `🤖..Sim Cloning\n` +
-      `🤖..Termux Package\n` +
-      `🤖..Unlimited otp\n` +
-      `🤖..Email bombing\n` +
-      `🤖..Apk tool\n` +
-      `🤖..Nikto Tool\n` +
-      `🤖..Dark Eagle\n\n` +
-      `🎁..More Options coming soon😊\nThank You Team HCO🔖`;
-
-      addMessage(menuMsg, 'bot');
-    } else if (commandMap[lowerInput]) {
-      const link = commandMap[lowerInput];
-      const botMsg = `𝗜𝗺 𝗛𝗮𝗰𝗸𝗲𝗿𝘀 𝗖𝗼𝗹𝗼𝗻𝘆 𝗕𝗼𝘁🤖\n𝗜𝗺 𝗿𝗲𝗽𝗹𝘆𝗶𝗻𝗴 𝗼𝗻 𝗯𝗲𝗵𝗮𝗹𝗳 𝗼𝗳 𝗔𝗱𝗺𝗶𝗻𝘀.\n👇👇👇👇👇👇👇👇👇👇👇\n*********************************\nWanna know what is ${input} and how it works and how dangerous is it. Go watch out video below to know more 👇👇👇👇👇👇\n${link}`;
-      addMessage(botMsg, 'bot');
-    } else {
-      addMessage("🤖 Sorry, I couldn't find info for that. Type `menu` to see available commands.", 'bot');
+    if (lowerInput === "clear") {
+      chatWindow.innerHTML = "";
+      return;
     }
 
+    if (lowerInput === "menu") {
+      const videoMenu = Object.keys(commandMap).map(cmd => `📌 ${cmd}`).join('\n');
+      const toolMenu = Object.keys(directCommandMap).map(cmd => `🛠️ ${cmd}`).join('\n');
+      const menuMsg = `📋 Available Video Commands:\n\n${videoMenu}\n\n🔧 Tool Commands:\n\n${toolMenu}`;
+      addMessage(menuMsg, 'bot');
+      return;
+    }
+
+    const toolMatch = getBestMatch(lowerInput, directCommandMap);
+    if (toolMatch) {
+      const raw = directCommandMap[toolMatch];
+      const formatted = raw.replace(/\\n/g, '\n');
+      const response = `Hello ${username} \n Here are the commands to access ${toolMatch} and knwo more: \n ${toolMatch}\n\n${formatted}`;
+      addMessage(response, 'bot');
+      return;
+    }
+
+    const videoMatch = getBestMatch(lowerInput, commandMap);
+    if (videoMatch) {
+      const link = commandMap[videoMatch];
+      const botMsg = `Hello ${username} \n Here is the link to gain more knwoledge on ${videoMatch} follow it to gain more knwoledge: \n ${videoMatch}\n${link}`;
+      addMessage(botMsg, 'bot');
+      return;
+    }
+
+    addMessage(`🤖 Sorry ${username}, I couldn't find info for "${input}". Type "menu" to see all commands.`, 'bot');
     commandInput.focus();
   });
 
