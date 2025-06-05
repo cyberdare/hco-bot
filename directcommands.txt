@@ -1,0 +1,1 @@
+ip-tracer=pkg update && pkg upgrade\npkg install git\ngit clone https://github.com/rajkumardusad/IP-Tracer\ncd IP-Tracer\nchmod +x install\nbash install\n\nThen run:\nbash\nip-tracer -m\n\nPhir kisi IP ka location dekhne ke liye:\nbash\nip-tracer <target-ip>
