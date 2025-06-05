@@ -14,8 +14,8 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      overflow: hidden;
     }
+
     .disclaimer {
       width: 100%;
       background-color: #111;
@@ -23,13 +23,14 @@
       padding: 8px 0;
       font-size: 0.9em;
       text-align: center;
-      z-index: 2;
     }
+
     .content {
       flex: 1;
       display: flex;
       overflow: hidden;
     }
+
     .sidebar {
       width: 240px;
       background-color: #1c1c1c;
@@ -38,11 +39,13 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
     .sidebar h2 {
       font-size: 1.2rem;
       margin-bottom: 10px;
       color: #00ffff;
     }
+
     .sidebar a, .sidebar button {
       display: block;
       margin-top: 10px;
@@ -56,21 +59,27 @@
       transition: background 0.2s ease;
       cursor: pointer;
     }
+
     .sidebar a:hover, .sidebar button:hover {
       background-color: #333;
     }
+
     .main {
       flex: 1;
       display: flex;
       flex-direction: column;
       padding: 20px;
+      overflow-y: auto;
+      max-height: 100vh;
     }
+
     .header {
       text-align: center;
       color: #00ffff;
       font-size: 1.8rem;
       margin-bottom: 10px;
     }
+
     #chatWindow {
       flex-grow: 1;
       background-color: #222;
@@ -80,21 +89,27 @@
       margin-bottom: 10px;
       font-size: 0.95em;
       line-height: 1.4em;
+      max-height: 60vh;
     }
+
     .message {
       margin-bottom: 15px;
       white-space: pre-wrap;
     }
+
     .userMsg {
       color: #a6e22e;
       font-weight: bold;
     }
+
     .botMsg {
       color: #b0fefe;
     }
+
     form {
       display: flex;
     }
+
     input[type='text'] {
       flex-grow: 1;
       padding: 12px;
@@ -104,6 +119,7 @@
       color: white;
       font-size: 1em;
     }
+
     button {
       padding: 12px 20px;
       border: none;
@@ -115,17 +131,21 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #00cccc;
     }
+
     a {
       color: #00ffff;
       text-decoration: underline;
     }
+
     @media screen and (max-width: 768px) {
       .content {
         flex-direction: column;
       }
+
       .sidebar {
         flex-direction: row;
         width: 100%;
@@ -133,12 +153,18 @@
         justify-content: space-around;
         padding: 10px;
       }
+
       .sidebar h2 {
         display: none;
       }
+
       .main {
         flex: 1;
         padding: 10px;
+      }
+
+      #chatWindow {
+        max-height: 40vh;
       }
     }
   </style>
@@ -154,7 +180,7 @@
     <div class="sidebar">
       <div>
         <h2>👤 {{ username }}</h2>
-        <a href="https://docs.google.com/forms/d/1xBN6uF-GRUI_3yKqg7nxhlBrrZK6J2ZO47P8tcOsAfg/viewform?pli=1&pli=1&edit_requested=true" target="_blank">📧 Contact Support</a>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">📧 Contact Support</a>
       </div>
       <form action="/logout" method="get">
         <button type="submit">🔓 Logout</button>
@@ -257,7 +283,7 @@
     if (toolMatch) {
       const raw = directCommandMap[toolMatch];
       const formatted = raw.replace(/\\n/g, '\n');
-      const response = `Hello ${username} \n Here are the commands to access ${toolMatch} and knwo more: \n ${toolMatch}\n\n${formatted}`;
+      const response = `Hyy ${username} you can get commands for ${toolMatch} here :\n ${toolMatch}\n\n${formatted}`;
       addMessage(response, 'bot');
       return;
     }
@@ -265,7 +291,7 @@
     const videoMatch = getBestMatch(lowerInput, commandMap);
     if (videoMatch) {
       const link = commandMap[videoMatch];
-      const botMsg = `Hello ${username} \n Here is the link to gain more knwoledge on ${videoMatch} follow it to gain more knwoledge: \n ${videoMatch}\n${link}`;
+      const botMsg = `Hello ${username} \n You can get what you need to know about ${videoMatch} here: \n ${videoMatch}\n${link}`;
       addMessage(botMsg, 'bot');
       return;
     }
