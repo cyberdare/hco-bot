@@ -13,7 +13,8 @@ DIRECT_COMMANDS_FILE = 'directcommands.txt'
 
 ADMIN_USERS = {
     "ashish": generate_password_hash("welcome2025"),
-    "Dare": generate_password_hash("Dare@3456789")
+    "Dare": generate_password_hash("Dare@3456789"),
+    "Rain": generate_password_hash("Rainrain123")
 }
 
 def init_db():
