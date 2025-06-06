@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hackers Colony Bot 🤖</title>
+
+  <!-- 🔐 PropellerAds Site Verification Meta -->
+  <meta name="monetag" content="e4d9ca1c2cad979afa8eea0b4ddc0f95" />
+
   <style>
     * { box-sizing: border-box; }
     body {
@@ -180,7 +184,7 @@
     <div class="sidebar">
       <div>
         <h2>👤 {{ username }}</h2>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQpU9KQa4da2r2m2n7BRQ9A8Gv5Bi618h9SocGsw6Sgj6iAA/viewform?usp=dialog" target="_blank">📧 Contact Support</a>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">📧 Contact Support</a>
       </div>
       <form action="/logout" method="get">
         <button type="submit">🔓 Logout</button>
@@ -283,7 +287,7 @@
     if (toolMatch) {
       const raw = directCommandMap[toolMatch];
       const formatted = raw.replace(/\\n/g, '\n');
-      const response = `Hyy ${username} you can get commands for ${toolMatch} here :\n ${toolMatch}\n\n${formatted}`;
+      const response = `🧰 Tool: ${toolMatch}\n\n${formatted}`;
       addMessage(response, 'bot');
       return;
     }
@@ -291,7 +295,7 @@
     const videoMatch = getBestMatch(lowerInput, commandMap);
     if (videoMatch) {
       const link = commandMap[videoMatch];
-      const botMsg = `Hello ${username} \n You can get what you need to know about ${videoMatch} here: \n ${videoMatch}\n${link}`;
+      const botMsg = `🎥 Video: ${videoMatch}\n${link}`;
       addMessage(botMsg, 'bot');
       return;
     }
