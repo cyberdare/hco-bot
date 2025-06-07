@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hackers Colony Bot 🤖</title>
-
-  <!-- ✅ PropellerAds Monetag Verification -->
-  <meta name="monetag" content="e4d9ca1c2cad979afa8eea0b4ddc0f95" />
-
   <style>
     * { box-sizing: border-box; }
     body {
@@ -174,13 +170,9 @@
   </style>
 </head>
 <body>
-
-  <!-- ✅ PropellerAds Monetization Script -->
-  <script src="https://fpyf8.com/88/tag.min.js" data-zone="150997" async data-cfasync="false"></script>
-
   <div class="disclaimer">
     <marquee behavior="scroll" direction="left">
-      Hello {{ username }} — this bot does not promote or support illegal hacking. This is just for educational purposes. Use it carefully and at your own risk.
+      Hello {{ username }} — this bot does not promote or support illegal hacking. This is just for educational purposes. Use it carefully and at your own risk. We dont promote anything illegal or help in that. NOTICE:- THE BOT IS CURRENTLY OPERATIONAL ONLY IN ENGLISH. MORE LANGUAGE WILL BE ADDED SOON.
     </marquee>
   </div>
 
@@ -188,7 +180,7 @@
     <div class="sidebar">
       <div>
         <h2>👤 {{ username }}</h2>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">📧 Contact Support</a>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank">Contact Support</a>
       </div>
       <form action="/logout" method="get">
         <button type="submit">🔓 Logout</button>
@@ -282,7 +274,8 @@
     if (lowerInput === "menu") {
       const videoMenu = Object.keys(commandMap).map(cmd => `📌 ${cmd}`).join('\n');
       const toolMenu = Object.keys(directCommandMap).map(cmd => `🛠️ ${cmd}`).join('\n');
-      const menuMsg = `📋 Available Video Commands:\n\n${videoMenu}\n\n🔧 Tool Commands:\n\n${toolMenu}`;
+      const menuMsg = `📋 Available Video Commands 
+      Note The bot is currently working in english language:\n\n${videoMenu}\n\n🔧 Tool Commands:\n\n${toolMenu}`;
       addMessage(menuMsg, 'bot');
       return;
     }
@@ -291,7 +284,10 @@
     if (toolMatch) {
       const raw = directCommandMap[toolMatch];
       const formatted = raw.replace(/\\n/g, '\n');
-      const response = `🧰 Tool: ${toolMatch}\n\n${formatted}`;
+      const response = `Hyy ${username} you can get commands for ${toolMatch} here 
+      Followthe below commands to access ${toolMatch}
+      ******************************************
+      👇👇👇👇👇👇👇👇👇👇👇👇👇:\n ${toolMatch}\n\n${formatted}`;
       addMessage(response, 'bot');
       return;
     }
@@ -299,7 +295,10 @@
     const videoMatch = getBestMatch(lowerInput, commandMap);
     if (videoMatch) {
       const link = commandMap[videoMatch];
-      const botMsg = `🎥 Video: ${videoMatch}\n${link}`;
+      const botMsg = `Hello ${username} \n You can get what you need to know about ${videoMatch} here
+      Follow the below link to know more about ${videoMatch} 
+      ******************************************
+      👇👇👇👇👇👇👇👇👇👇👇👇👇: \n ${videoMatch}\n${link}`;
       addMessage(botMsg, 'bot');
       return;
     }
